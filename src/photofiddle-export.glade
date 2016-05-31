@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.19.0 
+
+Copyright (C) 2016 Billy Barrow
+
+This file is part of Workflow.
+
+Workflow is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Workflow is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Workflow.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Billy Barrow
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.16"/>
+  <!-- interface-license-type lgplv3 -->
+  <!-- interface-name Workflow -->
+  <!-- interface-copyright 2016 Billy Barrow -->
+  <!-- interface-authors Billy Barrow -->
+  <object class="GtkBox" id="exportSaveBox">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkFileChooserWidget" id="exportSave">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="action">save</property>
+        <property name="do_overwrite_confirmation">True</property>
+        <property name="local_only">False</property>
+        <property name="preview_widget_active">False</property>
+        <property name="use_preview_label">False</property>
+        <signal name="selection-changed" handler="checkExportValid" swapped="no"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkWindow" id="exportWindow">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="type_hint">dialog</property>
+    <child>
+      <object class="GtkStack" id="exportStack">
+        <property name="name">Watermark</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="transition_type">slide-left-right</property>
+        <signal name="set-focus-child" handler="on_exportFocusChanged" swapped="no"/>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkButton" id="exportCancelButton">
+            <property name="label">gtk-cancel</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <signal name="clicked" handler="on_exportCancelButton_clicked" swapped="no"/>
+          </object>
+        </child>
+        <child type="title">
+          <object class="GtkStackSwitcher" id="exportStackSwitcher">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="stack">exportStack</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="exportExportButton">
+            <property name="label" translatable="yes">Export</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_exportExportButton_clicked" swapped="no"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinner" id="exportSpinner">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="watermarkPrintMessage">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">exportWindow</property>
+    <property name="attached_to">exportWindow</property>
+    <property name="buttons">ok</property>
+    <property name="text" translatable="yes">You have a watermark on this image</property>
+    <property name="secondary_text" translatable="yes">You have selected the "Export for Printing" preset, but you also have a watermark on this image. You can print your photo with or without a watermark but most of the time photos are printed without watermarks. This isn't an error, we are just letting you know in case you had watermark enabled by accident.</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="messagedialog-vbox8">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="messagedialog-action_area8">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">expand</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkFileFilter" id="filefilter1">
+    <mime-types>
+      <mime-type>image/png</mime-type>
+      <mime-type>image/gif</mime-type>
+    </mime-types>
+  </object>
+  <object class="GtkBox" id="exportWatermark">
+    <property name="name">Watermark</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_left">18</property>
+    <property name="margin_right">18</property>
+    <property name="margin_top">18</property>
+    <property name="margin_bottom">18</property>
+    <property name="orientation">vertical</property>
+    <property name="spacing">6</property>
+    <child>
+      <object class="GtkBox" id="box11">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label7">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Watermark:</property>
+            <property name="ellipsize">end</property>
+            <property name="xalign">0</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="exportWatermarkSwitch">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <signal name="state-set" handler="checkExportValid" swapped="no"/>
+            <signal name="state-set" handler="on_exportWatermarkSwitch_state_set" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkFileChooserWidget" id="exportWatermarkFile">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can_focus">False</property>
+        <property name="create_folders">False</property>
+        <property name="filter">filefilter1</property>
+        <property name="local_only">False</property>
+        <signal name="selection-changed" handler="checkExportValid" swapped="no"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label8">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">6</property>
+        <property name="label" translatable="yes">Position:</property>
+        <property name="xalign">0</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBoxText" id="exportWatermarkPosition">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can_focus">False</property>
+        <property name="resize_mode">immediate</property>
+        <property name="active">8</property>
+        <items>
+          <item id="0" translatable="yes">Top Left</item>
+          <item id="1" translatable="yes">Top</item>
+          <item id="2" translatable="yes">Top Right</item>
+          <item id="3" translatable="yes">Left</item>
+          <item id="4" translatable="yes">Centre</item>
+          <item id="5" translatable="yes">Right</item>
+          <item id="6" translatable="yes">Bottom Left</item>
+          <item id="7" translatable="yes">Bottom</item>
+          <item id="8" translatable="yes">Bottom Right</item>
+        </items>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">4</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkFileFilter" id="filefilter2"/>
+  <object class="GtkMessageDialog" id="flickrPresetWarning">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="message_type">warning</property>
+    <property name="buttons">yes-no</property>
+    <property name="text" translatable="yes">Exporting For Flickr</property>
+    <property name="secondary_text" translatable="yes">You are about to export for Flickr, this preset recursively optimises the outputed PNG image until it is under the 200MB file size limit imposed by Flickr. This can take some time if your photograph is of high resolution, do you wish to continue?</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="messagedialog-vbox11">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="messagedialog-action_area11">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">expand</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="imageHeightAjustment">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="imageWidthAjustment">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="jpegQualityAjustment">
+    <property name="lower">10</property>
+    <property name="upper">100</property>
+    <property name="value">90</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkBox" id="exportProfile">
+    <property name="name">Watermark</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="valign">start</property>
+    <property name="margin_left">18</property>
+    <property name="margin_right">18</property>
+    <property name="margin_top">18</property>
+    <property name="margin_bottom">18</property>
+    <property name="vexpand">False</property>
+    <property name="orientation">vertical</property>
+    <property name="spacing">6</property>
+    <child>
+      <object class="GtkGrid" id="grid1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label10">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Preset:</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label11">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Format:</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label12">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Width:</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label13">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Height:</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="exportPreset">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="active">0</property>
+            <items>
+              <item translatable="yes">Custom Settings</item>
+              <item translatable="yes">Export For Facebook</item>
+              <item translatable="yes">Export For Flickr</item>
+              <item translatable="yes">Export For Direct Web Publishing</item>
+              <item translatable="yes">Export For Printing</item>
+            </items>
+            <signal name="changed" handler="on_exportPreset_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="exportWidth">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="input_purpose">digits</property>
+            <property name="adjustment">imageWidthAjustment</property>
+            <property name="climb_rate">1</property>
+            <property name="snap_to_ticks">True</property>
+            <signal name="value-changed" handler="on_exportWidth_value_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="exportHeight">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">imageHeightAjustment</property>
+            <signal name="value-changed" handler="on_exportHeight_value_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBoxText" id="exportFormat">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="active">1</property>
+            <items>
+              <item translatable="yes">PNG</item>
+              <item translatable="yes">JPEG</item>
+              <item translatable="yes">TIFF</item>
+            </items>
+            <signal name="changed" handler="on_exportFormat_changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="exportJpegQuality">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">jpegQualityAjustment</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label9">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">JPEG Quality:</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="exportPngcrushEnabled">
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label14">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">PNG Crush:</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>
