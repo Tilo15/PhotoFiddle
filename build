@@ -1,0 +1,97 @@
+#!/usr/bin/python
+
+import os, stat
+from shutil import copyfile, rmtree
+
+def log(m):
+	print "[BUILD] " + m
+
+
+log("Cleaning")
+try:
+	rmtree("out/")
+except:
+	log("Nothing to clean")
+
+
+log("Creating directory tree")
+
+os.mkdir("out/")
+os.mkdir("out/usr/")
+os.mkdir("out/usr/lib/")
+os.mkdir("out/usr/lib/PhotoFiddle/")
+os.mkdir("out/usr/bin/")
+os.mkdir("out/usr/local/")
+os.mkdir("out/usr/local/share/")
+os.mkdir("out/usr/local/share/photofiddle/")
+os.mkdir("out/usr/local/share/photofiddle/ui/")
+os.mkdir("out/usr/share/")
+os.mkdir("out/usr/share/applications")
+
+log("Updating paths in 'photofiddle.py'")
+
+phf = open("src/photofiddle.py", 'r')
+out = open("out/usr/lib/PhotoFiddle/PhotoFiddle", 'w')
+line = 1
+while line:
+	line = phf.readline()
+	if(line.startswith("UI_FILE =")):
+		out.write('UI_FILE = "/usr/local/share/photofiddle/ui/photofiddle.glade"\n')
+	elif(line.startswith("UI_FILE_EX =")):
+		out.write('UI_FILE_EX = "/usr/local/share/photofiddle/ui/photofiddle-export.glade"')
+	else:
+		out.write(line)
+
+phf.close()
+out.close()
+
+log("Creating execution script")
+
+out = open("out/usr/bin/photofiddle", 'w')
+out.write("#!/bin/bash\n")
+out.write("/usr/lib/PhotoFiddle/PhotoFiddle")
+
+out.close()
+
+log("Creating .desktop file")
+
+out = open("out/usr/share/applications/photofiddle.desktop", 'w')
+
+out.write("""#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=PhotoFiddle
+Comment=Post production of bitmap images
+Exec=photofiddle
+Icon=camera-photo
+Terminal=false""")
+
+out.close()
+
+log("Copying remaining files...")
+
+copyfile("src/colours.py", "out/usr/lib/PhotoFiddle/colours.py")
+copyfile("src/contrast.py", "out/usr/lib/PhotoFiddle/contrast.py")
+copyfile("src/detailer.py", "out/usr/lib/PhotoFiddle/detailer.py")
+copyfile("src/grayscale.py", "out/usr/lib/PhotoFiddle/grayscale.py")
+copyfile("src/histogram.py", "out/usr/lib/PhotoFiddle/histogram.py")
+copyfile("src/stack.py", "out/usr/lib/PhotoFiddle/stack.py")
+
+copyfile("src/empty.png", "out/usr/local/share/photofiddle/ui/empty.png")
+copyfile("src/photofiddle.glade", "out/usr/local/share/photofiddle/ui/photofiddle.glade")
+copyfile("src/photofiddle-export.glade", "out/usr/local/share/photofiddle/ui/photofiddle-export.glade")
+
+log("Making files executable")
+
+st = os.stat('out/usr/share/applications/photofiddle.desktop')
+os.chmod('out/usr/share/applications/photofiddle.desktop', st.st_mode | stat.S_IEXEC)
+
+st = os.stat('out/usr/bin/photofiddle')
+os.chmod('out/usr/bin/photofiddle', st.st_mode | stat.S_IEXEC)
+
+st = os.stat('out/usr/lib/PhotoFiddle/PhotoFiddle')
+os.chmod('out/usr/lib/PhotoFiddle/PhotoFiddle', st.st_mode | stat.S_IEXEC)
+
+log("Done.")
