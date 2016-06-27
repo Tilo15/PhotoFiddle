@@ -262,6 +262,19 @@ class GUI:
         thread.start()
 
 
+    def on_autoContrastButton_clicked(self, button):
+        confirm = self.builder.get_object('autoContrastDialog')
+        continueFlag = True
+        if(confirm.run() == -9):
+            continueFlag = False
+        confirm.hide()
+        if(continueFlag):
+            v = contrast.autoContrast(self.origionalImage)
+            self.builder.get_object('hc').set_value(v[0])
+            self.builder.get_object('mc').set_value(v[1])
+            self.builder.get_object('sc').set_value(v[2])
+
+
 
     def tool_reset(self, sender):
         self._set(self.defaultData, sender)
@@ -612,6 +625,8 @@ class GUI:
                 thread = threading.Thread(target=self.saveImageData)
                 thread.start()
 
+
+
     def updateContrast(self, image):
         hb = self.builder.get_object('hb').get_value()
         hc = self.builder.get_object('hc').get_value()
@@ -808,7 +823,7 @@ class GUI:
 
         # Detailer
         self.exportProgress(0.5, "Applying Changes: Edges")
-        im = self.updateDetailer(im)
+        im = self.updateEdges(im)
 
         # Colours
         self.exportProgress(0.6, "Applying Changes: Colours")

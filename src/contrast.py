@@ -126,3 +126,123 @@ def applyContrast(im, hb, hc, mb, mc, sb, sc):
     else:
         return im
 
+
+
+
+def autoContrast(im):
+	log("Auto Contrast")
+
+	bpp = float(str(im.dtype).replace("uint", ""))
+	np = float(2**bpp-1)
+
+	image = im.astype(numpy.float32)
+
+	# highlight
+	h = image[image > (np/3.0)*2.0]
+	rh = h.max()
+	fh = h.min()
+
+	# midtone
+	m = image[(image > (np/3.0)) * (image < (np/3.0)*2.0)]
+	rm = m.max()
+	fm = m.min()
+
+	# shadow
+	s = image[image < (np/3.0)]
+	rs = s.max()
+	fs = s.min()
+
+	print rh, fh, rm, fm, rs, fs
+
+
+	# mc = (C/100.0)*np+0.8
+	# hn = np + 4
+	# (((hn*(C+np))/(np*(hn-C)))*(I - np/2.0)+np/2.0)
+
+	# Constants
+	b = np
+	d = float(b + 4.0)
+	
+
+
+    # Get initial contrast for max highlight
+	Ci = (b*d*(rh-1))/(b*rh+d)
+	T = b   # Target value
+	Cf = ((b*d*(T-1))/(b*T+d))-Ci
+
+	Crh = Cf #Store Contrast for roof highlight
+	
+
+    # Get initial contrast for min highlight
+	Ci = (b*d*(fh-1))/(b*fh+d)
+	T = (b/3.0)*2.0   # Target value
+	Cf = ((b*d*(T-1))/(b*T+d))-Ci
+
+	Cfh = Cf #Store Contrast for roof highlight
+
+
+
+    # Get initial contrast for max midtone
+	Ci = (b*d*(rm-1))/(b*rm+d)
+	T = (b/3.0)*2.0   # Target value
+	Cf = ((b*d*(T-1))/(b*T+d))-Ci
+
+	Crm = Cf #Store Contrast for roof midtone
+	
+
+    # Get initial contrast for min midtone
+	Ci = (b*d*(fm-1))/(b*fm+d)
+	T = (b/3.0)  # Target value
+	Cf = ((b*d*(T-1))/(b*T+d))-Ci
+
+	Cfm = Cf #Store Contrast for roof midtone
+
+
+
+    # Get initial contrast for max shadow
+	Ci = (b*d*(rs-1))/(b*rs+d)
+	T = (b/3.0)   # Target value
+	Cf = ((b*d*(T-1))/(b*T+d))-Ci
+
+	Crs = Cf #Store Contrast for roof shadow
+	
+
+    # Get initial contrast for min shadow
+	Ci = (b*d*(fs-1))/(b*fs+d)
+	T = 1.0 # Target value
+	Cf = ((b*d*(T-1))/(b*T+d))-Ci
+
+	Cfs = Cf #Store Contrast for roof shadow
+
+
+
+	print Crh, Cfh, Crm, Cfm, Crs, Cfs
+
+
+	Ch = max(Crh, Cfh)
+	Cm = max(Crm, Cfm)
+	Cs = min(Crs, Cfs)
+
+	if(Ch < -1):
+		Ch = min(Crh, Cfh)
+
+	if(Cm < -1):
+		Cm = min(Crm, Cfm)
+
+	if(Cs < -1):
+		Cs = max(Crs, Cfs)
+
+	print Ch, Cm, Cs
+
+	return (4+Ch*100.0+4, 4+Cm*100.0+4, 4+Cs*100.0)
+
+
+
+
+
+
+	
+
+	
+
+
