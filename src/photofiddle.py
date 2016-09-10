@@ -507,6 +507,7 @@ class GUI:
             nh = height*ratio
             self.image = cv2.resize(self.image, (int(nw), int(nh)))
 
+        self.loadedImage = self.image.copy()
         self.origionalImage = self.image.copy()
         cv2.imwrite("/tmp/phf-orig.tiff", self.origionalImage)
 
@@ -534,6 +535,7 @@ class GUI:
             nh = height*ratio
 
             out = cv2.resize(self.image, (int(self.previewWidth), int(nh)))
+            self.origionalImage = cv2.resize(self.loadedImage, (int(self.previewWidth), int(nh)))
             cv2.imwrite("/tmp/phf-preview.tiff", out)
 
             self.currentPB = GdkPixbuf.Pixbuf.new_from_file("/tmp/phf-preview.tiff")
