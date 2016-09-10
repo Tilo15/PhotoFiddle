@@ -152,7 +152,7 @@ class GUI:
 
 
     def on_fitButton_clicked(self, button):
-        height, width = self.image.shape[:2]
+        height, width = self.loadedImage.shape[:2]
         preview = self.builder.get_object('previewWindow')
         lg = max(height, width)
         if(lg == width):
@@ -189,7 +189,7 @@ class GUI:
         self.updatePreview()
 
     def on_origionalSizeButton_clicked(self, button):
-        height, width = self.image.shape[:2]
+        height, width = self.loadedImage.shape[:2]
         self.previewWidth = float(width)
 
         self.updatePreview()
