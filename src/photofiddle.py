@@ -644,6 +644,10 @@ class GUI:
         sb += self.builder.get_object('sbc').get_value()
         sc += self.builder.get_object('scc').get_value()
 
+        hbl = self.builder.get_object('hbl').get_value()
+        mbl = self.builder.get_object('mbl').get_value()
+        sbl = self.builder.get_object('sbl').get_value()
+
         hb += self.builder.get_object('brightness').get_value()
         mb += self.builder.get_object('brightness').get_value()
         sb += self.builder.get_object('brightness').get_value()
@@ -652,7 +656,7 @@ class GUI:
         mc += self.builder.get_object('contrast').get_value()
         sc += self.builder.get_object('contrast').get_value()
 
-        return contrast.applyContrast(image, hb, hc, mb, mc, sb, sc)
+        return contrast.applyContrast(image, hb, hc, mb, mc, sb, sc, hbl, mbl, sbl)
 
 
     def updateColour(self, image):
@@ -797,10 +801,10 @@ class GUI:
     objarr = None
 
     def populateObjArr(self):
-        self.objarr = [self.builder.get_object('hb'), self.builder.get_object('hc'), self.builder.get_object('mb'), self.builder.get_object('mc'), self.builder.get_object('sb'), self.builder.get_object('sc'), self.builder.get_object('hbc'), self.builder.get_object('hcc'), self.builder.get_object('mbc'), self.builder.get_object('mcc'), self.builder.get_object('sbc'), self.builder.get_object('scc'), self.builder.get_object('brightness'), self.builder.get_object('contrast'), self.builder.get_object('dhb'), self.builder.get_object('dhc'), self.builder.get_object('dmb'), self.builder.get_object('dmc'), self.builder.get_object('dsb'), self.builder.get_object('dsc'), self.builder.get_object('detailerS'), self.builder.get_object('detailerD'), self.builder.get_object('detailerSwitch'), self.builder.get_object('hue'), self.builder.get_object('saturation'), self.builder.get_object('hs'), self.builder.get_object('ms'), self.builder.get_object('ss'), self.builder.get_object('rob'), self.builder.get_object('rhb'), self.builder.get_object('rmb'), self.builder.get_object('rsb'), self.builder.get_object('gob'), self.builder.get_object('ghb'), self.builder.get_object('gmb'), self.builder.get_object('gsb'), self.builder.get_object('bob'), self.builder.get_object('bhb'), self.builder.get_object('bmb'), self.builder.get_object('bsb'), self.builder.get_object('edgesSwitch'), self.builder.get_object('edgeS'), self.builder.get_object('eth1'), self.builder.get_object('eth2'), self.builder.get_object('bwSwitch'), self.builder.get_object('bwCombo'), self.builder.get_object('bwr'), self.builder.get_object('bwg'), self.builder.get_object('bwb')]
+        self.objarr = [self.builder.get_object('hb'), self.builder.get_object('hc'), self.builder.get_object('mb'), self.builder.get_object('mc'), self.builder.get_object('sb'), self.builder.get_object('sc'), self.builder.get_object('hbc'), self.builder.get_object('hcc'), self.builder.get_object('mbc'), self.builder.get_object('mcc'), self.builder.get_object('sbc'), self.builder.get_object('scc'), self.builder.get_object('brightness'), self.builder.get_object('contrast'), self.builder.get_object('dhb'), self.builder.get_object('dhc'), self.builder.get_object('dmb'), self.builder.get_object('dmc'), self.builder.get_object('dsb'), self.builder.get_object('dsc'), self.builder.get_object('detailerS'), self.builder.get_object('detailerD'), self.builder.get_object('detailerSwitch'), self.builder.get_object('hue'), self.builder.get_object('saturation'), self.builder.get_object('hs'), self.builder.get_object('ms'), self.builder.get_object('ss'), self.builder.get_object('rob'), self.builder.get_object('rhb'), self.builder.get_object('rmb'), self.builder.get_object('rsb'), self.builder.get_object('gob'), self.builder.get_object('ghb'), self.builder.get_object('gmb'), self.builder.get_object('gsb'), self.builder.get_object('bob'), self.builder.get_object('bhb'), self.builder.get_object('bmb'), self.builder.get_object('bsb'), self.builder.get_object('edgesSwitch'), self.builder.get_object('edgeS'), self.builder.get_object('eth1'), self.builder.get_object('eth2'), self.builder.get_object('bwSwitch'), self.builder.get_object('bwCombo'), self.builder.get_object('bwr'), self.builder.get_object('bwg'), self.builder.get_object('bwb'), self.builder.get_object('hbl'), self.builder.get_object('mbl'), self.builder.get_object('sbl')]
 
 
-    defaultData = ["%PHF%", "defaultImage", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 15.0, False, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, False, 30.0, 100.0, 200.0, False, 0.0, 0.33, 0.33, 0.33]
+    defaultData = ["%PHF%", "defaultImage", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 15.0, False, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, False, 30.0, 100.0, 200.0, False, 0.0, 0.33, 0.33, 0.33, 0.5, 0.5, 0.5]
 
 
 

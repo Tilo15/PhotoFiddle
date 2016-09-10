@@ -23,8 +23,8 @@ import os, sys, cv2, numpy
 def log(message):
     print "[CONTRAST.PY] " + message
 
-def isHighlight(A):
-    bleed = float(A.max()/12.0)
+def isHighlight(A, bv = 6.0):
+    bleed = float(A.max()/bv)
     mif = A.max()/3.0*2.0
     a = A.copy()
 
@@ -33,13 +33,9 @@ def isHighlight(A):
     a[a >= mif] = 1.0
     return a
 
-def isHighlightOld(A):
-    hif = A.max()/3.0*2.0
-    return numpy.floor(A/hif)
 
-
-def isMidtone(A):
-    bleed = float(A.max()/12.0)
+def isMidtone(A, bv = 6.0):
+    bleed = float(A.max()/bv)
     mif = A.max()/3.0
     mir = A.max()/3.0*2.0
     a = A.copy()
@@ -53,8 +49,8 @@ def isMidtone(A):
     return a
 
 
-def isShadow(A):
-    bleed = float(A.max()/12.0)
+def isShadow(A, bv = 6.0):
+    bleed = float(A.max()/bv)
     mir = A.max()/3.0
     a = A.copy()
 
@@ -63,22 +59,16 @@ def isShadow(A):
     a[a > mir] = (((a[(a > mir) * (a != 0.0)])-mir)/bleed)*-1+1
     return a
 
-def isShadowOld(A):
-    mif = A.min()
-    mir = A.max()/3.0
-    p = -(A-mif)*(A-mir)
-
-    return numpy.floor((numpy.sign(p) + 1)/2.0)
 
 
-def applyContrast(im, hb, hc, mb, mc, sb, sc):
+def applyContrast(im, hb, hc, mb, mc, sb, sc, hbl, mbl, sbl):
     if((hb != 0.0) or (hc != 0.0) or (mb != 0.0) or (mc != 0.0) or (sb != 0.0) or (sc != 0.0)):
         bpp = float(str(im.dtype).replace("uint", ""))
         np = float(2**bpp-1)
         out = im.astype(numpy.float32)
         log("Applying Highlights")
         ## Highlight Contrast
-        isHr = isHighlight(out)
+        isHr = isHighlight(out, (3.0/hbl))
         if(hc != 0.0):
             hn = np + 4
             hc = (hc/100.0)*np+0.8
@@ -90,7 +80,7 @@ def applyContrast(im, hb, hc, mb, mc, sb, sc):
 
         log("Applying Midtones")
         ## Midtone Contrast
-        isMr = isMidtone(out)
+        isMr = isMidtone(out, (3.0/mbl))
         if(mc != 0.0):
             hn = np + 4
             mc = (mc/100.0)*np+0.8
@@ -105,7 +95,7 @@ def applyContrast(im, hb, hc, mb, mc, sb, sc):
 
         log("Applying Shadows")
         ## Shadow Contrast
-        isSr = isShadow(out)
+        isSr = isShadow(out, (3.0/sbl))
         if(sc != 0.0):
             hn = np + 4
             sc = (sc/100.0)*np+0.8
