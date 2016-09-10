@@ -25,16 +25,16 @@ def log(message):
 
 
 
-def applyColours(im, hue, saturation, hs, ms, ss, rob, rhb, rmb, rsb, gob, ghb, gmb, gsb, bob, bhb, bmb, bsb):
+def applyColours(im, hue, saturation, hs, ms, ss, rob, rhb, rmb, rsb, gob, ghb, gmb, gsb, bob, bhb, bmb, bsb, chbl, cmbl, csbl):
     if((hue != 0.0) or (saturation != 0.0) or (hs != 0.0) or (ms != 0.0) or (ss != 0.0) or (rob != 0.0) or (rhb != 0.0) or (rmb != 0.0) or (rsb != 0.0) or (gob != 0.0) or (ghb != 0.0) or (gmb != 0.0) or (gsb != 0.0) or (bob != 0.0) or (bhb != 0.0) or (bmb != 0.0) or (bsb != 0.0)):
         bpp = float(str(im.dtype).replace("uint", ""))
         np = float(2**bpp-1)
 
 
         out = im.astype(numpy.float32)
-        isHr = contrast.isHighlight(out)
-        isMr = contrast.isMidtone(out)
-        isSr = contrast.isShadow(out)
+        isHr = contrast.isHighlight(out, (3.00/chbl))
+        isMr = contrast.isMidtone(out, (3.00/cmbl))
+        isSr = contrast.isShadow(out, (3.00/csbl))
 
 
         log("Converting to HSV")

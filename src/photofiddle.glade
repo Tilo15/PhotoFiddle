@@ -301,10 +301,31 @@
       </packing>
     </child>
   </object>
+  <object class="GtkAdjustment" id="chbl">
+    <property name="lower">0.01</property>
+    <property name="upper">1</property>
+    <property name="value">0.5</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="cmbl">
+    <property name="lower">0.01</property>
+    <property name="upper">1</property>
+    <property name="value">0.5</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkAdjustment" id="contrast">
     <property name="lower">-50</property>
     <property name="upper">50</property>
     <property name="step_increment">0.10000000000000001</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="csbl">
+    <property name="lower">0.01</property>
+    <property name="upper">1</property>
+    <property name="value">0.5</property>
+    <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="detailerD">
@@ -819,7 +840,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_top">12</property>
-        <property name="margin_bottom">12</property>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -2786,7 +2806,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_top">12</property>
-        <property name="margin_bottom">12</property>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -2968,16 +2987,199 @@
       </packing>
     </child>
     <child>
-      <object class="GtkSeparator" id="separator7">
+      <object class="GtkSeparator" id="separator13">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_top">12</property>
-        <property name="margin_bottom">12</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="position">5</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label68">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="label" translatable="yes">&lt;b&gt;Tonal Bleed Fraction&lt;/b&gt;
+&lt;i&gt;(Applies to all on this tab)&lt;/i&gt;</property>
+        <property name="use_markup">True</property>
+        <property name="ellipsize">end</property>
+        <property name="xalign">0</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid10">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label69">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Highlight Bleed</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label72">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Midtone Bleed</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label73">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Shadow Bleed</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale23">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">chbl</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale25">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">cmbl</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale26">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">csbl</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="value_pos">right</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton54">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="chbl" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image63">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton55">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="cmbl" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image64">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton56">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="csbl" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image67">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator" id="separator7">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">8</property>
       </packing>
     </child>
     <child>
@@ -2995,7 +3197,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">6</property>
+        <property name="position">9</property>
       </packing>
     </child>
     <child>
@@ -3198,7 +3400,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">False</property>
-        <property name="position">7</property>
+        <property name="position">10</property>
       </packing>
     </child>
     <child>
@@ -3206,12 +3408,11 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_top">12</property>
-        <property name="margin_bottom">12</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">8</property>
+        <property name="position">11</property>
       </packing>
     </child>
     <child>
@@ -3229,7 +3430,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">9</property>
+        <property name="position">12</property>
       </packing>
     </child>
     <child>
@@ -3432,7 +3633,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">False</property>
-        <property name="position">10</property>
+        <property name="position">13</property>
       </packing>
     </child>
     <child>
@@ -3440,12 +3641,11 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="margin_top">12</property>
-        <property name="margin_bottom">12</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">11</property>
+        <property name="position">14</property>
       </packing>
     </child>
     <child>
@@ -3463,7 +3663,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">12</property>
+        <property name="position">15</property>
       </packing>
     </child>
     <child>
@@ -3666,7 +3866,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">False</property>
-        <property name="position">13</property>
+        <property name="position">16</property>
       </packing>
     </child>
   </object>

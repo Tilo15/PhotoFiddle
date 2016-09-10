@@ -48,7 +48,7 @@ def runDetailer(im, strength, detail, hb, hc, mb, mc, sb, sc):
     inverted = invert(gray)
 
     log("Applying Brightness and Contrast Ajustments")
-    inverted = contrast.applyContrast(inverted, sb, sc, mb, mc, hb, hc)
+    inverted = contrast.applyContrast(inverted, sb, sc, mb, mc, hb, hc, 0.5, 0.5, 0.5)
 
     if (detail > 0):
         log("Blurring")
