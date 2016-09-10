@@ -108,7 +108,7 @@ def applyContrast(im, hb, hc, mb, mc, sb, sc):
         isSr = isShadow(out)
         if(sc != 0.0):
             hn = np + 4
-            mc = (sc/100.0)*np+0.8
+            sc = (sc/100.0)*np+0.8
             #F = ((hn*(mc+np))/(np*(hn-sc)))
             #out = (F*(out - np/2.0)+np/2.0)*isSr + (out - out*isSr)
             out = (((hn*((sc*isSr)+np))/(np*(hn-(sc*isSr))))*(out - np/2.0)+np/2.0)
