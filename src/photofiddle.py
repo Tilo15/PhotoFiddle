@@ -73,9 +73,8 @@ class GUI:
         self.windowEx = self.builder_ex.get_object('exportWindow')
 
         exportStack = self.builder_ex.get_object('exportStack')
-        exportStack.add_titled(self.builder_ex.get_object('exportWatermark'), "watermark", "Watermark")
         exportStack.add_titled(self.builder_ex.get_object('exportProfile'), "profile", "File Options")
-        exportStack.add_titled(self.builder_ex.get_object('exportSaveBox'), "fileWidget", "Save As")
+        exportStack.add_titled(self.builder_ex.get_object('exportWatermark'), "watermark", "Watermark")
 
 
         window = self.builder.get_object('window')
@@ -405,11 +404,7 @@ class GUI:
 
 
     def on_exportExportButton_clicked(self, button):
-        self.windowEx.hide()
-        self.disableControls()
-        self.updateProgress(0.0, False)
-        self.builder.get_object('openButton').set_sensitive(False)
-
+        print "it be clicked"
         # Get data and do it
         pngcrush = self.builder_ex.get_object('exportPngcrushEnabled').get_active()
         watermarkfile = self.builder_ex.get_object('exportWatermarkFile').get_filename()
@@ -421,8 +416,41 @@ class GUI:
         jpegQ = int(self.builder_ex.get_object('exportJpegQuality').get_value())
         watermarkPosition = self.builder_ex.get_object('exportWatermarkPosition').get_active()
         selectedPreset = self.builder_ex.get_object('exportPreset').get_active()
-        thread = threading.Thread(target=self.exportImage, args=(self.on_exportComplete, width, height, fileformat, filename, watermark, watermarkfile, watermarkPosition,jpegQ ,pngcrush, selectedPreset))
-        thread.start()
+
+        continueFlag = True
+
+
+        if(self.builder_ex.get_object('exportPreset').get_active() == 2):
+            errorm = self.builder_ex.get_object('flickrPresetWarning')
+            if(errorm.run() == -9):
+                continueFlag = False
+            errorm.hide()
+
+
+        if(continueFlag):
+
+            ext = ".png"
+            if(fileformat == 1):
+                ext = ".jpg"
+            if(fileformat == 2):
+                ext = ".tiff"
+
+            if(os.path.isfile(filename) or os.path.isfile(filename + ext)):
+                errorm = self.builder_ex.get_object('overwriteWarning')
+                if(errorm.run() == -9):
+                    continueFlag = False
+                errorm.hide()
+
+
+
+        if(continueFlag):
+            self.windowEx.hide()
+            self.disableControls()
+            self.updateProgress(0.0, False)
+            self.builder.get_object('openButton').set_sensitive(False)
+
+            thread = threading.Thread(target=self.exportImage, args=(self.on_exportComplete, width, height, fileformat, filename, watermark, watermarkfile, watermarkPosition,jpegQ ,pngcrush, selectedPreset))
+            thread.start()
 
     def on_exportComplete(self, location):
         self.enableControls()

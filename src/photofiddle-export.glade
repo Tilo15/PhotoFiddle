@@ -27,41 +27,91 @@ Author: Billy Barrow
   <!-- interface-name Workflow -->
   <!-- interface-copyright 2016 Billy Barrow -->
   <!-- interface-authors Billy Barrow -->
-  <object class="GtkBox" id="exportSaveBox">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="orientation">vertical</property>
-    <child>
-      <object class="GtkFileChooserWidget" id="exportSave">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="action">save</property>
-        <property name="do_overwrite_confirmation">True</property>
-        <property name="local_only">False</property>
-        <property name="preview_widget_active">False</property>
-        <property name="use_preview_label">False</property>
-        <signal name="selection-changed" handler="checkExportValid" swapped="no"/>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-  </object>
   <object class="GtkWindow" id="exportWindow">
     <property name="can_focus">False</property>
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
     <child>
-      <object class="GtkStack" id="exportStack">
-        <property name="name">Watermark</property>
+      <object class="GtkBox" id="exportSaveBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="transition_type">slide-left-right</property>
-        <signal name="set-focus-child" handler="on_exportFocusChanged" swapped="no"/>
+        <property name="orientation">vertical</property>
         <child>
-          <placeholder/>
+          <object class="GtkFileChooserWidget" id="exportSave">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">18</property>
+            <property name="margin_right">18</property>
+            <property name="margin_top">18</property>
+            <property name="margin_bottom">18</property>
+            <property name="action">save</property>
+            <property name="do_overwrite_confirmation">True</property>
+            <property name="local_only">False</property>
+            <property name="preview_widget_active">False</property>
+            <property name="use_preview_label">False</property>
+            <signal name="selection-changed" handler="checkExportValid" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="separator1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="box1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">18</property>
+            <property name="margin_right">18</property>
+            <property name="margin_top">18</property>
+            <property name="margin_bottom">18</property>
+            <child>
+              <object class="GtkStackSidebar" id="stacksidebar1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stack">exportStack</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkStack" id="exportStack">
+                <property name="name">Watermark</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="transition_type">slide-up-down</property>
+                <property name="interpolate_size">True</property>
+                <signal name="set-focus-child" handler="on_exportFocusChanged" swapped="no"/>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
         </child>
       </object>
     </child>
@@ -69,6 +119,7 @@ Author: Billy Barrow
       <object class="GtkHeaderBar" id="headerbar3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="title">Export Photograph</property>
         <child>
           <object class="GtkButton" id="exportCancelButton">
             <property name="label">gtk-cancel</property>
@@ -77,13 +128,6 @@ Author: Billy Barrow
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <signal name="clicked" handler="on_exportCancelButton_clicked" swapped="no"/>
-          </object>
-        </child>
-        <child type="title">
-          <object class="GtkStackSwitcher" id="exportStackSwitcher">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stack">exportStack</property>
           </object>
         </child>
         <child>
@@ -112,6 +156,82 @@ Author: Billy Barrow
             <property name="pack_type">end</property>
             <property name="position">2</property>
           </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="flickrPresetWarning">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">exportWindow</property>
+    <property name="message_type">warning</property>
+    <property name="buttons">yes-no</property>
+    <property name="text" translatable="yes">Exporting For Flickr</property>
+    <property name="secondary_text" translatable="yes">You are about to export for Flickr, this preset recursively optimises the outputed PNG image until it is under the 200MB file size limit imposed by Flickr. This can take some time if your photograph is of high resolution, do you wish to continue?</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="messagedialog-vbox11">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="messagedialog-action_area11">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">expand</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="overwriteWarning">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">exportWindow</property>
+    <property name="message_type">warning</property>
+    <property name="buttons">yes-no</property>
+    <property name="text" translatable="yes">Overwrite?</property>
+    <property name="secondary_text" translatable="yes">The filename you have chosen already exists in this directiory, do you wish to overwrite it?</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="messagedialog-vbox7">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="messagedialog-action_area7">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">expand</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>
@@ -266,43 +386,6 @@ Author: Billy Barrow
     </child>
   </object>
   <object class="GtkFileFilter" id="filefilter2"/>
-  <object class="GtkMessageDialog" id="flickrPresetWarning">
-    <property name="can_focus">False</property>
-    <property name="modal">True</property>
-    <property name="type_hint">dialog</property>
-    <property name="message_type">warning</property>
-    <property name="buttons">yes-no</property>
-    <property name="text" translatable="yes">Exporting For Flickr</property>
-    <property name="secondary_text" translatable="yes">You are about to export for Flickr, this preset recursively optimises the outputed PNG image until it is under the 200MB file size limit imposed by Flickr. This can take some time if your photograph is of high resolution, do you wish to continue?</property>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="messagedialog-vbox11">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox" id="messagedialog-action_area11">
-            <property name="can_focus">False</property>
-            <property name="homogeneous">True</property>
-            <property name="layout_style">expand</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-    </child>
-  </object>
   <object class="GtkAdjustment" id="imageHeightAjustment">
     <property name="upper">100</property>
     <property name="step_increment">1</property>
