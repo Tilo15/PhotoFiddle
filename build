@@ -78,6 +78,8 @@ copyfile("src/detailer.py", "out/usr/lib/PhotoFiddle/detailer.py")
 copyfile("src/grayscale.py", "out/usr/lib/PhotoFiddle/grayscale.py")
 copyfile("src/histogram.py", "out/usr/lib/PhotoFiddle/histogram.py")
 copyfile("src/stack.py", "out/usr/lib/PhotoFiddle/stack.py")
+copyfile("src/tonemap.py", "out/usr/lib/PhotoFiddle/tonemap.py")
+copyfile("src/photofile.py", "out/usr/lib/PhotoFiddle/photofile.py")
 
 copyfile("src/empty.png", "out/usr/local/share/photofiddle/ui/empty.png")
 copyfile("src/photofiddle.glade", "out/usr/local/share/photofiddle/ui/photofiddle.glade")
