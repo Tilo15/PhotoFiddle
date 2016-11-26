@@ -18,7 +18,7 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, GdkPixbuf, Gdk, GLib
-import os, sys, cv2, threading, subprocess, time, numpy, contrast, stack, detailer, histogram, colours, grayscale, cairo, tonemap
+import os, sys, cv2, threading, subprocess, time, numpy, contrast, stack, detailer, histogram, colours, grayscale, cairo, tonemap, photofile
 
 
 #Comment the first line and uncomment the second before installing
@@ -67,8 +67,6 @@ class GUI:
         self.builder_ex = Gtk.Builder()
         self.builder_ex.add_from_file(UI_FILE_EX)
         self.builder_ex.connect_signals(self)
-
-        self.populateObjArr()
 
         self.windowEx = self.builder_ex.get_object('exportWindow')
 
@@ -280,7 +278,7 @@ class GUI:
 
 
     def tool_reset(self, sender):
-        self._set(self.defaultData, sender)
+        photofile.resetObject(sender, self.builder)
 
 
 
@@ -790,75 +788,13 @@ class GUI:
             return image
 
 
-    def _nl(self, data):
-        return str(float(data)) + "\n"
 
     def saveImageData(self):
-        data = "%PHF%\n"
-
-        path = self.imageFile.split("/")
-        fname = path[len(path)-1]
-        data += fname + "\n"
-
-        for obj in self.objarr:
-            try:
-                data += self._nl(obj.get_value())
-            except:
-                data += self._nl(obj.get_active())
-
-        #Save the file
-        f = open(self.imageFile + ".phf", 'w')
-        f.write(data)
-        f.close
+        photofile.saveFile(self.imageFile, self.builder)
 
 
     def loadImageData(self, filename):
-
-        if(os.path.isfile(filename + ".phf")):
-            f = open(filename + ".phf", 'r')
-            data = f.read()
-            f.close()
-
-            success = True
-
-            dataarr = data.split('\n')
-            if(dataarr[0] == "%PHF%"):
-                img = dataarr[1]
-                print "Setting data for " + img
-                GLib.idle_add(self._setAll, dataarr)
-
-            else:
-                GLib.idle_add(self.showMessage, True, "Couldn't load associated .PHF file", "The file is invalid or currupt", False)
-                GLib.idle_add(self._setAll, self.defaultData)
-        else:
-            GLib.idle_add(self._setAll, self.defaultData)
-
-
-
-    def _setAll(self, data):
-        for i, obj in enumerate(self.objarr):
-            if(i <= len(self.objarr)-1):
-                try:
-                    obj.set_value(float(data[i+2]))
-                except:
-                    obj.set_active(float(data[i+2]))
-
-    def _set(self, data, item):
-        for i, obj in enumerate(self.objarr):
-            if(i <= len(self.objarr)-1):
-                if(item == obj):
-                    try:
-                        obj.set_value(float(data[i+2]))
-                    except:
-                        obj.set_active(float(data[i+2]))
-
-    objarr = None
-
-    def populateObjArr(self):
-        self.objarr = [self.builder.get_object('hb'), self.builder.get_object('hc'), self.builder.get_object('mb'), self.builder.get_object('mc'), self.builder.get_object('sb'), self.builder.get_object('sc'), self.builder.get_object('hbc'), self.builder.get_object('hcc'), self.builder.get_object('mbc'), self.builder.get_object('mcc'), self.builder.get_object('sbc'), self.builder.get_object('scc'), self.builder.get_object('brightness'), self.builder.get_object('contrast'), self.builder.get_object('dhb'), self.builder.get_object('dhc'), self.builder.get_object('dmb'), self.builder.get_object('dmc'), self.builder.get_object('dsb'), self.builder.get_object('dsc'), self.builder.get_object('detailerS'), self.builder.get_object('detailerD'), self.builder.get_object('detailerSwitch'), self.builder.get_object('hue'), self.builder.get_object('saturation'), self.builder.get_object('hs'), self.builder.get_object('ms'), self.builder.get_object('ss'), self.builder.get_object('rob'), self.builder.get_object('rhb'), self.builder.get_object('rmb'), self.builder.get_object('rsb'), self.builder.get_object('gob'), self.builder.get_object('ghb'), self.builder.get_object('gmb'), self.builder.get_object('gsb'), self.builder.get_object('bob'), self.builder.get_object('bhb'), self.builder.get_object('bmb'), self.builder.get_object('bsb'), self.builder.get_object('edgesSwitch'), self.builder.get_object('edgeS'), self.builder.get_object('eth1'), self.builder.get_object('eth2'), self.builder.get_object('bwSwitch'), self.builder.get_object('bwCombo'), self.builder.get_object('bwr'), self.builder.get_object('bwg'), self.builder.get_object('bwb'), self.builder.get_object('hbl'), self.builder.get_object('mbl'), self.builder.get_object('sbl'), self.builder.get_object('chbl'), self.builder.get_object('cmbl'), self.builder.get_object('csbl'), self.builder.get_object('tonemapSwitch'), self.builder.get_object('tms'), self.builder.get_object('tmb'), self.builder.get_object('tmcs'), self.builder.get_object('tmtp')]
-
-
-    defaultData = ["%PHF%", "defaultImage", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 15.0, False, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, False, 30.0, 100.0, 200.0, False, 0.0, 0.33, 0.33, 0.33, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, False, 90, 10, 75, False]
+		photofile.loadFile(filename + ".phf", self.builder)
 
 
 
