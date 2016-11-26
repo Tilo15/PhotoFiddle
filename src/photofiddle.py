@@ -18,7 +18,7 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, GdkPixbuf, Gdk, GLib
-import os, sys, cv2, threading, subprocess, time, numpy, contrast, stack, detailer, histogram, colours, grayscale, cairo
+import os, sys, cv2, threading, subprocess, time, numpy, contrast, stack, detailer, histogram, colours, grayscale, cairo, tonemap
 
 
 #Comment the first line and uncomment the second before installing
@@ -197,8 +197,12 @@ class GUI:
         preview = self.builder.get_object('preview')
         if(self.builder.get_object('previewOldImageButton').get_active()):
             preview.set_from_pixbuf(self.origionalPB)
+            thread = threading.Thread(target=self.updateHist, args=(self.origionalImage,))
+            thread.start()
         else:
             preview.set_from_pixbuf(self.currentPB)
+            thread = threading.Thread(target=self.updateHist)
+            thread.start()
 
 
     def on_exportButton_clicked(self, button):
@@ -583,8 +587,10 @@ class GUI:
     def _disableOldPreviewButton(self):
         self.builder.get_object('previewOldImageButton').set_active(False)
 
-    def updateHist(self):
-        pb = histogram.drawHistFor(self.image)
+    def updateHist(self, im = None):
+        if im == None:
+            im = self.image
+        pb = histogram.drawHistFor(im)
         GLib.idle_add(self._showHist, pb)
 
     def _showHist(self, pb):
@@ -618,15 +624,18 @@ class GUI:
             self.image = self.updateContrast(self.image)
 
             GLib.idle_add(self.updateProgress, 0.2)
-            self.image = self.updateDetailer(self.image)
+            self.image = self.updateTonemap(self.image)
 
             GLib.idle_add(self.updateProgress, 0.3)
-            self.image = self.updateEdges(self.image)
+            self.image = self.updateDetailer(self.image)
 
             GLib.idle_add(self.updateProgress, 0.4)
-            self.image = self.updateColour(self.image)
+            self.image = self.updateEdges(self.image)
 
             GLib.idle_add(self.updateProgress, 0.5)
+            self.image = self.updateColour(self.image)
+
+            GLib.idle_add(self.updateProgress, 0.6)
             self.image = self.updateBW(self.image)
 
 
@@ -735,6 +744,19 @@ class GUI:
             return image
 
 
+    def updateTonemap(self, image):
+        tms = self.builder.get_object('tms').get_value()
+        tmb = self.builder.get_object('tmb').get_value()
+        tmcs = self.builder.get_object('tmcs').get_value()
+
+        tmtp = self.builder.get_object('tmtp').get_active()
+
+        if(self.builder.get_object('tonemapSwitch').get_active()):
+            return tonemap.runTonemap(image, tmb, tmcs, tms, tmtp)
+        else:
+            return image
+
+
 
     def updateEdges(self, image):
 
@@ -833,10 +855,10 @@ class GUI:
     objarr = None
 
     def populateObjArr(self):
-        self.objarr = [self.builder.get_object('hb'), self.builder.get_object('hc'), self.builder.get_object('mb'), self.builder.get_object('mc'), self.builder.get_object('sb'), self.builder.get_object('sc'), self.builder.get_object('hbc'), self.builder.get_object('hcc'), self.builder.get_object('mbc'), self.builder.get_object('mcc'), self.builder.get_object('sbc'), self.builder.get_object('scc'), self.builder.get_object('brightness'), self.builder.get_object('contrast'), self.builder.get_object('dhb'), self.builder.get_object('dhc'), self.builder.get_object('dmb'), self.builder.get_object('dmc'), self.builder.get_object('dsb'), self.builder.get_object('dsc'), self.builder.get_object('detailerS'), self.builder.get_object('detailerD'), self.builder.get_object('detailerSwitch'), self.builder.get_object('hue'), self.builder.get_object('saturation'), self.builder.get_object('hs'), self.builder.get_object('ms'), self.builder.get_object('ss'), self.builder.get_object('rob'), self.builder.get_object('rhb'), self.builder.get_object('rmb'), self.builder.get_object('rsb'), self.builder.get_object('gob'), self.builder.get_object('ghb'), self.builder.get_object('gmb'), self.builder.get_object('gsb'), self.builder.get_object('bob'), self.builder.get_object('bhb'), self.builder.get_object('bmb'), self.builder.get_object('bsb'), self.builder.get_object('edgesSwitch'), self.builder.get_object('edgeS'), self.builder.get_object('eth1'), self.builder.get_object('eth2'), self.builder.get_object('bwSwitch'), self.builder.get_object('bwCombo'), self.builder.get_object('bwr'), self.builder.get_object('bwg'), self.builder.get_object('bwb'), self.builder.get_object('hbl'), self.builder.get_object('mbl'), self.builder.get_object('sbl'), self.builder.get_object('chbl'), self.builder.get_object('cmbl'), self.builder.get_object('csbl')]
+        self.objarr = [self.builder.get_object('hb'), self.builder.get_object('hc'), self.builder.get_object('mb'), self.builder.get_object('mc'), self.builder.get_object('sb'), self.builder.get_object('sc'), self.builder.get_object('hbc'), self.builder.get_object('hcc'), self.builder.get_object('mbc'), self.builder.get_object('mcc'), self.builder.get_object('sbc'), self.builder.get_object('scc'), self.builder.get_object('brightness'), self.builder.get_object('contrast'), self.builder.get_object('dhb'), self.builder.get_object('dhc'), self.builder.get_object('dmb'), self.builder.get_object('dmc'), self.builder.get_object('dsb'), self.builder.get_object('dsc'), self.builder.get_object('detailerS'), self.builder.get_object('detailerD'), self.builder.get_object('detailerSwitch'), self.builder.get_object('hue'), self.builder.get_object('saturation'), self.builder.get_object('hs'), self.builder.get_object('ms'), self.builder.get_object('ss'), self.builder.get_object('rob'), self.builder.get_object('rhb'), self.builder.get_object('rmb'), self.builder.get_object('rsb'), self.builder.get_object('gob'), self.builder.get_object('ghb'), self.builder.get_object('gmb'), self.builder.get_object('gsb'), self.builder.get_object('bob'), self.builder.get_object('bhb'), self.builder.get_object('bmb'), self.builder.get_object('bsb'), self.builder.get_object('edgesSwitch'), self.builder.get_object('edgeS'), self.builder.get_object('eth1'), self.builder.get_object('eth2'), self.builder.get_object('bwSwitch'), self.builder.get_object('bwCombo'), self.builder.get_object('bwr'), self.builder.get_object('bwg'), self.builder.get_object('bwb'), self.builder.get_object('hbl'), self.builder.get_object('mbl'), self.builder.get_object('sbl'), self.builder.get_object('chbl'), self.builder.get_object('cmbl'), self.builder.get_object('csbl'), self.builder.get_object('tonemapSwitch'), self.builder.get_object('tms'), self.builder.get_object('tmb'), self.builder.get_object('tmcs'), self.builder.get_object('tmtp')]
 
 
-    defaultData = ["%PHF%", "defaultImage", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 15.0, False, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, False, 30.0, 100.0, 200.0, False, 0.0, 0.33, 0.33, 0.33, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+    defaultData = ["%PHF%", "defaultImage", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 15.0, False, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, False, 30.0, 100.0, 200.0, False, 0.0, 0.33, 0.33, 0.33, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, False, 90, 10, 75, False]
 
 
 
@@ -854,6 +876,10 @@ class GUI:
         # Brightness and Contrast
         self.exportProgress(0.3, "Applying Changes: Brightness and Contrast")
         im = self.updateContrast(im)
+
+        # Brightness and Contrast
+        self.exportProgress(0.35, "Applying Changes: Tone Map")
+        im = self.updateTonemap(im)
 
         # Detailer
         self.exportProgress(0.4, "Applying Changes: Detailer")

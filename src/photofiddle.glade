@@ -1649,1011 +1649,6 @@
     <property name="step_increment">0.10000000000000001</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkBox" id="bandcWidget">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="orientation">vertical</property>
-    <child>
-      <object class="GtkLabel" id="label1">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="label" translatable="yes">Brightness and Contrast</property>
-        <property name="xalign">0</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkGrid" id="grid5">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="hexpand">True</property>
-        <property name="row_spacing">6</property>
-        <property name="column_spacing">12</property>
-        <child>
-          <object class="GtkLabel" id="label29">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Brightness</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label30">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Contrast</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale19">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">brightness</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale20">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">contrast</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton9">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="brightness" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image15">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton10">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="contrast" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image16">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">False</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparator" id="separator4">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="margin_bottom">12</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkBox" id="box10">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <child>
-          <object class="GtkLabel" id="label28">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_top">12</property>
-            <property name="label" translatable="yes">Tonal Brightness and Contrast</property>
-            <property name="xalign">0</property>
-            <attributes>
-              <attribute name="weight" value="bold"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="autoContrastButton">
-            <property name="label" translatable="yes">Auto Contrast</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">end</property>
-            <property name="margin_top">12</property>
-            <property name="hexpand">True</property>
-            <signal name="clicked" handler="on_autoContrastButton_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkGrid" id="grid1">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="hexpand">True</property>
-        <property name="row_spacing">6</property>
-        <property name="column_spacing">12</property>
-        <child>
-          <object class="GtkLabel" id="label10">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Highlight Brightness</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label11">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Highlight Contrast</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label12">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Midtone Brightness</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label13">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Midtone Contrast</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label9">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Shadow Brightness</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label14">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Shadow Contrast</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale1">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">hb</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale2">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">hc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale3">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">mc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale4">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">mb</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale5">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">sb</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale6">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">sc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton11">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="hb" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image17">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton12">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="hc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image18">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton13">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="mb" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image19">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton14">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="mc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image20">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton15">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="sb" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image21">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton16">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="sc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image22">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">False</property>
-        <property name="position">4</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparator" id="separator12">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">5</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label64">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="label" translatable="yes">Tonal Bleed Fraction</property>
-        <property name="ellipsize">end</property>
-        <property name="xalign">0</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkGrid" id="grid2">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="hexpand">True</property>
-        <property name="row_spacing">6</property>
-        <property name="column_spacing">12</property>
-        <child>
-          <object class="GtkLabel" id="label65">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Highlight Bleed</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label66">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Midtone Bleed</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label67">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Shadow Bleed</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale21">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">hbl</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale22">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">mbl</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale24">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">sbl</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton51">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="hbl" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image60">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton52">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="mbl" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image61">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton53">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="sbl" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image62">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">False</property>
-        <property name="position">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSeparator" id="separator3">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">8</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label18">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="label" translatable="yes">Fine Ajustments</property>
-        <property name="ellipsize">end</property>
-        <property name="xalign">0</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">9</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkGrid" id="grid4">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">12</property>
-        <property name="hexpand">True</property>
-        <property name="row_spacing">6</property>
-        <property name="column_spacing">12</property>
-        <child>
-          <object class="GtkLabel" id="label22">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Highlight Brightness</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label23">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Highlight Contrast</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label24">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Midtone Brightness</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label25">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Midtone Contrast</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label26">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Shadow Brightness</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label27">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Shadow Contrast</property>
-            <property name="xalign">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale13">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">hbc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale14">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">hcc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale15">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">mcc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale16">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">mbc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale17">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">sbc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScale" id="scale18">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">scc</property>
-            <property name="restrict_to_fill_level">False</property>
-            <property name="round_digits">1</property>
-            <property name="digits">2</property>
-            <property name="value_pos">right</property>
-            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton17">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="hbc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image23">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton18">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="hcc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image24">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton19">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="mbc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image25">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton20">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="mcc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image26">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton21">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="sbc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image27">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="resetButton22">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="tool_reset" object="scc" swapped="no"/>
-            <child>
-              <object class="GtkImage" id="image28">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-undo-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">False</property>
-        <property name="position">10</property>
-      </packing>
-    </child>
-  </object>
   <object class="GtkAdjustment" id="ss">
     <property name="lower">-50</property>
     <property name="upper">50</property>
@@ -3868,6 +2863,1286 @@
         <property name="expand">False</property>
         <property name="fill">False</property>
         <property name="position">16</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="tmb">
+    <property name="upper">100</property>
+    <property name="value">10</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="tmcs">
+    <property name="upper">100</property>
+    <property name="value">75</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="tms">
+    <property name="upper">100</property>
+    <property name="value">90</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkBox" id="bandcWidget">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkLabel" id="label1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="label" translatable="yes">Brightness and Contrast</property>
+        <property name="xalign">0</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+        </attributes>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid5">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label29">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Brightness</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label30">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Contrast</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale19">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">brightness</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale20">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">contrast</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton9">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="brightness" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image15">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton10">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="contrast" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image16">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator" id="separator4">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="margin_bottom">12</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkBox" id="box10">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkLabel" id="label28">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_top">12</property>
+            <property name="label" translatable="yes">Tonal Brightness and Contrast</property>
+            <property name="xalign">0</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="autoContrastButton">
+            <property name="label" translatable="yes">Auto Contrast</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">end</property>
+            <property name="margin_top">12</property>
+            <property name="hexpand">True</property>
+            <signal name="clicked" handler="on_autoContrastButton_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label10">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Highlight Brightness</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label11">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Highlight Contrast</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label12">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Midtone Brightness</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label13">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Midtone Contrast</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label9">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Shadow Brightness</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label14">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Shadow Contrast</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">hb</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale2">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">hc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale3">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">mc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale4">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">mb</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale5">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">sb</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale6">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">sc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton11">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="hb" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image17">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton12">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="hc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image18">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton13">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="mb" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image19">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton14">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="mc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image20">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton15">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="sb" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image21">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton16">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="sc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image22">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">4</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator" id="separator12">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">5</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label64">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="label" translatable="yes">Tonal Bleed Fraction</property>
+        <property name="ellipsize">end</property>
+        <property name="xalign">0</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+        </attributes>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">6</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label65">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Highlight Bleed</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label66">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Midtone Bleed</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label67">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Shadow Bleed</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale21">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">hbl</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale22">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">mbl</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale24">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">sbl</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton51">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="hbl" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image60">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton52">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="mbl" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image61">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton53">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="sbl" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image62">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">7</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator" id="separator3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">8</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label18">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="label" translatable="yes">Fine Ajustments</property>
+        <property name="ellipsize">end</property>
+        <property name="xalign">0</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+        </attributes>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">9</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid4">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label22">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Highlight Brightness</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label23">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Highlight Contrast</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label24">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Midtone Brightness</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label25">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Midtone Contrast</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label26">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Shadow Brightness</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label27">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Shadow Contrast</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale13">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">hbc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale14">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">hcc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale15">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">mcc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale16">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">mbc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale17">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">sbc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale18">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">scc</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">1</property>
+            <property name="digits">2</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton17">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="hbc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image23">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton18">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="hcc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image24">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton19">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="mbc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image25">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton20">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="mcc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image26">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton21">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="sbc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image27">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton22">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="scc" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image28">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">10</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSeparator" id="separator14">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">11</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkBox" id="box11">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkLabel" id="label74">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_top">12</property>
+            <property name="label" translatable="yes">Tone Mapping</property>
+            <property name="xalign">0</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="tonemapSwitch">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="margin_top">12</property>
+            <signal name="state-set" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">12</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid11">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin_top">12</property>
+        <property name="hexpand">True</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="label75">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Strength</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label76">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Bleed</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label77">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Colour Strength</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale27">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">tms</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="digits">0</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale28">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">tmb</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="digits">0</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale29">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">tmcs</property>
+            <property name="restrict_to_fill_level">False</property>
+            <property name="round_digits">2</property>
+            <property name="digits">0</property>
+            <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton59">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="tms" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image68">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton60">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="tmb" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image69">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton61">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="tmcs" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image70">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resetButton62">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="tool_reset" object="tmtp" swapped="no"/>
+            <child>
+              <object class="GtkImage" id="image71">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label78">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Two Pass</property>
+            <property name="xalign">1</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="tmtp">
+            <property name="label" translatable="yes">Enable</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="toggled" handler="on_tool_update" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">13</property>
       </packing>
     </child>
   </object>
