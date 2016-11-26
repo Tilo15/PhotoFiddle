@@ -239,6 +239,9 @@ class GUI:
     def on_focusSwitch_state_set(self, switch, state):
         self.builder.get_object('focusGrid').set_sensitive(state)
 
+    def on_tonemapSwitch_state_set(self, switch, state):
+        self.builder.get_object('tonemapGrid').set_sensitive(state)
+
 
 
     def on_claheSwitch_state_set(self, switch, state):
@@ -794,7 +797,10 @@ class GUI:
 
 
     def loadImageData(self, filename):
-		photofile.loadFile(filename + ".phf", self.builder)
+		if(os.path.isfile(filename + ".phf")):
+			photofile.loadFile(filename + ".phf", self.builder)
+		else:
+			photofile.applyDefaults(self.builder)
 
 
 

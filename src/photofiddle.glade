@@ -3926,6 +3926,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="margin_top">12</property>
+            <signal name="state-set" handler="on_tonemapSwitch_state_set" swapped="no"/>
             <signal name="state-set" handler="on_tool_update" swapped="no"/>
           </object>
           <packing>
@@ -3943,8 +3944,9 @@
       </packing>
     </child>
     <child>
-      <object class="GtkGrid" id="grid11">
+      <object class="GtkGrid" id="tonemapGrid">
         <property name="visible">True</property>
+        <property name="sensitive">False</property>
         <property name="can_focus">False</property>
         <property name="margin_top">12</property>
         <property name="hexpand">True</property>
@@ -3978,7 +3980,7 @@
           <object class="GtkLabel" id="label77">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Colour Strength</property>
+            <property name="label" translatable="yes">Contrast Adjust</property>
             <property name="xalign">1</property>
           </object>
           <packing>

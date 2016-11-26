@@ -71,7 +71,10 @@ def loadFile(filename, builder):
 
 	elif(dataLines[0] == "%PHF%"):
 		log("Legacy File")
-		legacyLoad(builder, filename)
+		try:
+			legacyLoad(builder, filename)
+		except:
+			log("Legacy File Invalid")
 		return dataLines[1]
 
 	else:
