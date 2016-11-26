@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 -->
+<!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.16"/>
   <object class="GtkAdjustment" id="bhb">
@@ -3100,6 +3100,7 @@
             <property name="restrict_to_fill_level">False</property>
             <property name="round_digits">2</property>
             <property name="value_pos">right</property>
+            <signal name="value-changed" handler="on_tool_update" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
