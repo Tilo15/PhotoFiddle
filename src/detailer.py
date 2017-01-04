@@ -114,8 +114,3 @@ def runEdges(im, strength, t1, t2):
     out = cv2.addWeighted(overlayed, (strength/100), im, 1 - (strength/100), 0)
 
     return out.astype(im.dtype)
-
-
-
-
-
